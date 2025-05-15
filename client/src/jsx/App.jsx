@@ -12,22 +12,23 @@ function App() {
   const [query, setQuery] = useState('');
 
   const handleSearch = async (searchQuery) => {
-    setQuery(searchQuery);
+      setQuery(searchQuery); // Set the query to the state
 
-    try {
-      const response = await fetch('https://oi5hultkdk.execute-api.us-east-1.amazonaws.com/dev');
-      const data = await response.json();
+      try {
+        const response = await fetch("https://oi5hultkdk.execute-api.us-east-1.amazonaws.com/dev");
+        const data = await response.json();
 
-      // Filter results locally based on the searchQuery
-      const filtered = data.filter(item =>
-      item.pname.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+        // Filter results locally based on the searchQuery
+        const filtered = data.filter(item =>
+          item.pname.toLowerCase().includes(searchQuery.toLowerCase())
+        );
 
-    setResults(filtered);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setResults([]);
-    }
+        setResults(filtered);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setResults([]);
+      }
+    };
 
   return (
     <>
@@ -65,7 +66,6 @@ function App() {
         </Router>
     </>
   )
-  }
 }
 
 export default App;
