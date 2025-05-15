@@ -142,7 +142,7 @@ form>fieldset>label {
   display: flex;
   flex-grow: 1;
   max-width: 600px;
-  border: 1px solid #343330b1;
+  border: 1px solid #3433308c;
   border-radius: 50px;
   overflow: hidden;
   background-color: #ffffff;
