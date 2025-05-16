@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import Page1 from './Page1.jsx';
 import { Search } from './Search.jsx';
+import { Product } from './Product.jsx';
 
 import './style.css'
 
@@ -56,17 +57,28 @@ function App() {
           <Search onSearch={handleSearch}/>
         </div>
           
-        <div style={{ marginTop: '100px', padding: '20px' }}>
+        <div className='productsContainer'>
         {query && (
           <div>
-            <h2>Results for "{query}"</h2>
-            <ul>
+          <h2>Results for "{query}"</h2>
+          {results.length === 0 ? (
+            <p>No results found.</p>
+          ) : (
+            <div className='products'>
               {results.map((item, index) => (
-                <li key={index}>{item}</li>
+                <div key={index}>
+                  <Product
+                    name={item.pname}
+                    price={item.pprice}
+                    description={item.pdescription}
+                    image={item.ppicturelink}
+                    stock={item.pnumberstock}
+                  />
+                </div>
               ))}
-              {results.length === 0 && <p>No results found.</p>}
-            </ul>
-          </div>
+            </div>
+          )}
+        </div>
         )}
         </div>
         

@@ -2,7 +2,7 @@
 import './style.css'
 import React from 'react'
 import { useState } from 'react';
-import Button from './Button.jsx'
+
 
 export function Search({ onSearch }) {
     // Search component
