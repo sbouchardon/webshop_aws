@@ -14,23 +14,33 @@ function App() {
   const handleSearch = async (searchQuery) => {
       setQuery(searchQuery); // Set the query to the state
 
-      try {
-        const response = await fetch("https://oi5hultkdk.execute-api.us-east-1.amazonaws.com/dev");
-        const bodyTxt = await response.text();
-        const data = JSON.parse(bodyTxt);
-        console.log(data);
+    try {
+      const response = await fetch("https://oi5hultkdk.execute-api.us-east-1.amazonaws.com/dev");
+      const text = await response.text();
+      console.log("Raw text from API:", text);
 
-        // Filter results locally based on the searchQuery
-        const filtered = data.filter(item =>
-          item.pname.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+      let data = JSON.parse(text);
 
-        setResults(filtered);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setResults([]);
+      // Handle double-encoded body
+      if (data.body && typeof data.body === 'string') {
+        data = JSON.parse(data.body);
       }
-    };
+
+      if (!Array.isArray(data)) {
+        console.error("Expected array but got:", data);
+        return;
+      }
+
+      const filtered = data.filter(item =>
+        item.pname.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+      setResults(filtered);
+    } catch (error) {
+      console.error("Error fetching or parsing data:", error);
+      setResults([]);
+    }
+  };
 
   return (
     <>
