@@ -12,62 +12,73 @@ function App() {
   const [query, setQuery] = useState('');
 
   const handleSearch = async (searchQuery) => {
-      setQuery(searchQuery); // Set the query to the state
+    setQuery(searchQuery); // Set the query to the state
 
+    try {
+      const response = await fetch("https://oi5hultkdk.execute-api.us-east-1.amazonaws.com/dev");
+      const text = await response.text();
+      console.log("Raw text from API:", text);
+
+      let data;
       try {
-        const response = await fetch("https://oi5hultkdk.execute-api.us-east-1.amazonaws.com/dev");
-        const bodyTxt = await response.text();
-        const data = JSON.parse(bodyTxt);
-        console.log(data);
-
-        // Filter results locally based on the searchQuery
-        const filtered = data.filter(item =>
-          item.pname.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-
-        setResults(filtered);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setResults([]);
+        data = JSON.parse(text);
+        // Handle double-encoded body if needed
+        if (data.body && typeof data.body === 'string') {
+          data = JSON.parse(data.body);
+        }
+      } catch (err) {
+        console.error("Failed to parse JSON:", err);
+        return;
       }
+
+      if (!Array.isArray(data)) {
+        console.error("Expected array but got:", data);
+        return;
+      }
+
+      const filtered = data.filter(item =>
+        item.pname.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+      setResults(filtered);
     };
 
-  return (
-    <>
+    return (
+      <>
 
 
         <Router>
-        <div className='navbar'>
+          <div className='navbar'>
 
-          <Link to="/page1">
-            <img src='/bambay_logo.svg'/>
-          </Link>
+            <Link to="/page1">
+              <img src='/bambay_logo.svg' />
+            </Link>
 
-          <Search onSearch={handleSearch}/>
-        </div>
-          
-        <div style={{ marginTop: '100px', padding: '20px' }}>
-        {query && (
-          <div>
-            <h2>Results for "{query}"</h2>
-            <ul>
-              {results.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-              {results.length === 0 && <p>No results found.</p>}
-            </ul>
+            <Search onSearch={handleSearch} />
           </div>
-        )}
-        </div>
-        
+
+          <div style={{ marginTop: '100px', padding: '20px' }}>
+            {query && (
+              <div>
+                <h2>Results for "{query}"</h2>
+                <ul>
+                  {results.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                  {results.length === 0 && <p>No results found.</p>}
+                </ul>
+              </div>
+            )}
+          </div>
+
 
           <Routes>
             <Route path="/page1" element={<Page1 />} />
             <Route path="*" element={<Navigate to="/page1" />} />
           </Routes>
         </Router>
-    </>
-  )
-}
+      </>
+    )
+  }
 
-export default App;
+  export default App;
