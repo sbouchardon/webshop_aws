@@ -16,7 +16,9 @@ function App() {
 
       try {
         const response = await fetch("https://oi5hultkdk.execute-api.us-east-1.amazonaws.com/dev");
-        const data = await response.json();
+        const bodyTxt = await response.text();
+        const data = JSON.parse(bodyTxt);
+        console.log(data);
 
         // Filter results locally based on the searchQuery
         const filtered = data.filter(item =>

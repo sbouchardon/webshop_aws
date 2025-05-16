@@ -36,5 +36,3 @@ export function Search({ onSearch }) {
     )
 };
   
-
-// https://oi5hultkdk.execute-api.us-east-1.amazonaws.com/dev
