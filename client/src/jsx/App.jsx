@@ -15,7 +15,7 @@ function App() {
       setQuery(searchQuery); // Set the query to the state
 
     try {
-      const response = await fetch("https://oi5hultkdk.execute-api.us-east-1.amazonaws.com/dev");
+      const response = await fetch("https://oi5hultkdk.execute-api.us-east-1.amazonaws.com/dev/products");
       const text = await response.text();
       console.log("Raw text from API:", text);
 
