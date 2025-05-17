@@ -23,7 +23,19 @@ body {
   overflow-y: auto;
 }
 
-
+/* background */
+.background-sign {
+  background-image: url('/sign.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain; /* or cover, depending on your preference */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
 
 .centerDiv {
   display: flex;
@@ -177,3 +189,4 @@ body {
   cursor: not-allowed;
   pointer-events: none;
 }
+
