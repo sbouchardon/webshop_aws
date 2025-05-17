@@ -1,11 +1,18 @@
 
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 export function Product(props) {
 
     /* update buy now button if product unavailable, price = 0 */
     const [isAvailable, setAvailable] = useState(true);
-
+    
+    /* navigate to page2 */
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/page2', { state: { item: props }});
+    }
 
     useEffect(() => {
 
@@ -35,7 +42,7 @@ export function Product(props) {
                         <p>{props.price} €</p>
                     </div>
 
-                    <button className={isAvailable ? "isAvailable" : "notAvailable"}  disabled={!isAvailable}>
+                    <button className={isAvailable ? "isAvailable" : "notAvailable"}  disabled={!isAvailable} onClick={handleClick}>
                         {isAvailable ? "Buy Now" : "Unavailable"}
                     </button>
                     

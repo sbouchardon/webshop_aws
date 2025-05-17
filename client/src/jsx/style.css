@@ -23,19 +23,7 @@ body {
   overflow-y: auto;
 }
 
-/* background */
-.background-sign {
-  background-image: url('/sign.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain; /* or cover, depending on your preference */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-}
+
 
 .centerDiv {
   display: flex;
@@ -90,7 +78,7 @@ body {
 
 #search-input {
   flex: 1;
-  padding: 12px 50px;
+  padding: 12px 60px;
   border: none;
   background-color: transparent;
   color: #000000;
@@ -119,6 +107,20 @@ body {
 #search-button:hover {
   background-color: #e0e0e0;
   cursor: pointer;
+}
+
+/* background */
+.background-sign {
+  background-image: url('/sign.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain; /* or cover, depending on your preference */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
 }
 
 
@@ -190,3 +192,58 @@ body {
   pointer-events: none;
 }
 
+
+/* Form on page2 */
+.centerForm {
+  margin-top: 70px; /* space for the fixed header */
+  padding: 10px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+form fieldset{
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  margin: 0;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+Input {
+  font-family: 'Open_Sans', sans-serif;
+  font-size: 15px;
+}
+
+/*
+Input[type="text"],
+Input[type="email"] {
+  width: 90%;
+  padding: 8px 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+*/
+
+
+
+button#idButtonSub {
+  background-color: #f08700;
+  color: black;
+  border: none;
+  font-weight: bold;
+  padding: 10px;
+  width: 100%;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button#idButtonSub:hover {
+  background-color: #f7ca00;
+}

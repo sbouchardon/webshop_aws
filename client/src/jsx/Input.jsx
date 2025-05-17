@@ -29,7 +29,7 @@ export default function Input(props) {
   return (
     <>
         <label className='labelClass'>
-            {valName} :<br/> <input name={valName} className='inputClass' placeholder={'Enter your ' + props.name} type={props.type} onChange={handleChange}/>
+            {valName} : <input name={valName} className='inputClass' placeholder={'Enter your ' + props.name} type={props.type} onChange={handleChange}/>
         </label>
         <p className={inputClassName}>Non valid {props.name}</p>
         
