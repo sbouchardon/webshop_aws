@@ -11,6 +11,8 @@ export function Product(props) {
     /* navigate to page2 */
     const navigate = useNavigate();
     const handleClick = () => {
+        /* store timed socket in case user reload the page */
+        sessionStorage.setItem("key", props.id);
         navigate('/page2', { state: { item: props }});
     }
 

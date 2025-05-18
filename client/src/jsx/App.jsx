@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import Page1 from './Page1.jsx';
 import Page2 from './Page2.jsx';
+
 import { Search } from './Search.jsx';
 import './style.css'
 
@@ -52,7 +53,8 @@ function AppRoutes() {
       
       {/* Only show background-sign if not on /page2 */}
       {location.pathname !== '/page2' && <div className='background-sign'></div>}
-      
+
+
       <Routes>
         <Route path="/page1" element={<Page1 results={results} query={query} handleSearch={handleSearch}/>} />
         <Route path="/page2" element={<Page2 />} />

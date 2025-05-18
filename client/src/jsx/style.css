@@ -230,7 +230,7 @@ Input[type="email"] {
 }
 */
 
-
+/* Form */
 
 button#idButtonSub {
   background-color: #f08700;
@@ -246,4 +246,13 @@ button#idButtonSub {
 
 button#idButtonSub:hover {
   background-color: #f7ca00;
+}
+
+.validValue {
+  visibility: hidden;
+}
+
+.invalidValue {
+  visibility: visible;
+  color: red;
 }

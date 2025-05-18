@@ -12,6 +12,9 @@ export default function Input(props) {
       if(props.name === 'email'){
         re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       }
+      else if(props.name === 'name' || props.name === 'surname'){
+        re = /^[a-zA-Z]+$/;
+      }
 
     re.test(e.target.value) ? setValid(true) : setValid(false);
     };
@@ -29,9 +32,9 @@ export default function Input(props) {
   return (
     <>
         <label className='labelClass'>
-            {valName} : <input name={valName} className='inputClass' placeholder={'Enter your ' + props.name} type={props.type} onChange={handleChange}/>
+            {valName} : <input name={props.name} className='inputClass' placeholder={'Enter your ' + props.name} type={props.type} onChange={handleChange}/>
         </label>
-        <p className={inputClassName}>Non valid {props.name}</p>
+        <p className={inputClassName}>Please enter a valid {props.name}.</p>
         
     </>
   )

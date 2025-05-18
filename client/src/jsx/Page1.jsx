@@ -22,6 +22,7 @@ function Page1({results, query}) {
                 {results.map((item, index) => (
                   <div key={index}>
                     <Product
+                      id={item.pid}
                       name={item.pname}
                       price={item.pprice}
                       description={item.pdescription}
