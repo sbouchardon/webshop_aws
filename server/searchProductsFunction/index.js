@@ -1,11 +1,12 @@
 const { Pool } = require('pg');
 
+// Create a new pool instance with the database connection details
 const pool = new Pool({
-  user: 'postgres',
-  host: 'webshop-db.cafgo66wipxz.us-east-1.rds.amazonaws.com',
-  database: 'postgres',
-  password: 'Pablo24fr',
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: parseInt(process.env.DB_PORT),
   ssl: {
     rejectUnauthorized: false,
   }
@@ -26,6 +27,7 @@ exports.handler = async (event) => {
     };
   }
 
+  // Check if the request method is GET 
   try {
     const result = await pool.query('SELECT * FROM Product');
     return {

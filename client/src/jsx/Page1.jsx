@@ -1,12 +1,10 @@
-import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
-import { useState } from 'react';
-
 import { Product } from './Product.jsx';
 
 import './style.css'
 
-function Page1({results, query}) {
-  // Introduction page
+function Page1({ results, query }) {
+  // This component displays the search results based on the query passed from the navigation bar inside App.jsx
+  // It uses the Product component to render each product in the results
 
   return (
     <>

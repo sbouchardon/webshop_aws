@@ -1,7 +1,9 @@
 const { Pool } = require('pg');
-// email 
+
+// Optional : email
 const { SESClient, SendEmailCommand } = require("@aws-sdk/client-ses");
 
+// Create a new pool instance with the database connection details
 const pool = new Pool({
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
@@ -13,7 +15,7 @@ const pool = new Pool({
     },
 });
 
-// email
+// Optional : email
 const ses = new SESClient({ region: process.env.REGION });
 
 exports.handler = async (event) => {
@@ -61,7 +63,7 @@ exports.handler = async (event) => {
     }
 
     try {
-        // Update stock
+        // Check if the product exists
         const result = await pool.query(
             'UPDATE Product SET pNumberStock = pNumberStock - 1 WHERE pId = $1 AND pNumberStock > 0 RETURNING *',
             [pId]
@@ -78,6 +80,7 @@ exports.handler = async (event) => {
         console.log("Product updated successfully");
         const productName = result.rows[0].pname;
 
+        // Optional : email
         const allowedEmail = ['bbbambayyy@gmail.com'];
         if (!allowedEmail.includes(email)) {
             return {
@@ -87,11 +90,8 @@ exports.handler = async (event) => {
             };
         }
 
-
-        // Email sending not working
-
         console.log("before sending email");
-        // Send confirmation email
+        // Optional : email
         const emailParams = new SendEmailCommand({
             Destination: { ToAddresses: [email] },
             Message: {
@@ -108,7 +108,7 @@ exports.handler = async (event) => {
         await ses.send(emailParams);
         console.log('Email sent');
 
-        // End email sending not working 
+        // Optional : email
         return {
             statusCode: 200,
             headers,

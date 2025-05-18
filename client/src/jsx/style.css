@@ -1,9 +1,4 @@
-@font-face {
-  font-family: 'Open_Sans';
-  src: url('Open_Sans/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+/* Webshop style-sheet */
 
 :root {
   font: 15px 'Open_Sans', sans-serif;
@@ -14,7 +9,6 @@
   padding: 10px;
 }
 
-/* Center the page */
 html,
 body {
   height: 100%;
@@ -22,8 +16,6 @@ body {
   padding: 0;
   overflow-y: auto;
 }
-
-
 
 .centerDiv {
   display: flex;
@@ -36,14 +28,12 @@ body {
   padding: 20px;
 }
 
-
-
-
-/*Search bar style*/
+/* Navigation bar */
 
 .navbar {
   display: flex;
-  align-items: center;     /* Center vertically */
+  align-items: center;
+  /* Center vertically */
   gap: 20px;
   padding: 10px 20px;
   background-color: white;
@@ -57,7 +47,8 @@ body {
 .navbar img {
   height: 55px;
   width: auto;
-  margin: 0; /* Remove side margins */
+  margin: 0;
+  /* Remove side margins */
 }
 
 #search-bar {
@@ -87,7 +78,8 @@ body {
 }
 
 #search-button img {
-  width: 30px; /* or any size that fits your design */
+  width: 30px;
+  /* or any size that fits your design */
   height: 30px;
   display: block;
   margin: auto;
@@ -109,12 +101,12 @@ body {
   cursor: pointer;
 }
 
-/* background */
+/* General Background */
 .background-sign {
   background-image: url('/sign.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain; /* or cover, depending on your preference */
+  background-size: contain;
   position: fixed;
   top: 0;
   left: 0;
@@ -124,16 +116,15 @@ body {
 }
 
 
-/* Product design */
+/* Product design on ./Page1 */
 .productsContainer {
-  margin-top: 70px; /* space for the fixed header */
+  margin-top: 70px;
+  /* space for the fixed header */
   padding: 10px 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
 }
-
-
 
 .products {
   display: flex;
@@ -142,7 +133,6 @@ body {
   justify-content: center;
 }
 
-
 .productCard {
   background-color: white;
   color: black;
@@ -150,12 +140,12 @@ body {
   width: 220px;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-} 
+}
 
 .productTitle {
   font-size: 15px;
@@ -171,7 +161,8 @@ body {
   font-weight: bold;
 }
 
-.isAvailable, .notAvailable {
+.isAvailable,
+.notAvailable {
   background-color: #f08700;
   color: black;
   border: none;
@@ -192,17 +183,17 @@ body {
   pointer-events: none;
 }
 
-
-/* Form on page2 */
+/* Form on /Page2 */
 .centerForm {
-  margin-top: 70px; /* space for the fixed header */
+  margin-top: 70px;
+  /* space for the fixed header */
   padding: 10px 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
 }
 
-form fieldset{
+form fieldset {
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 10px;
@@ -210,27 +201,13 @@ form fieldset{
   color: black;
   margin: 0;
   width: 100%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 Input {
   font-family: 'Open_Sans', sans-serif;
   font-size: 15px;
 }
-
-/*
-Input[type="text"],
-Input[type="email"] {
-  width: 90%;
-  padding: 8px 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-*/
-
-/* Form */
 
 button#idButtonSub {
   background-color: #f08700;

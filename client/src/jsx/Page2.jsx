@@ -1,10 +1,13 @@
-import "./style.css";
-
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
 import Input from './Input';
 
+import "./style.css";
+
 export default function Page2() {
+    // This component is used to create the form for the user to fill in their name, surname, and email
+
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -12,6 +15,8 @@ export default function Page2() {
     const keyVal = sessionStorage.getItem("key");
 
     const handleSubmit = async (e) => {
+        // This function handles the form submission
+
         e.preventDefault();
 
         const form = e.target;
@@ -19,7 +24,7 @@ export default function Page2() {
 
         if (!(/^[a-zA-Z]+$/).test(formData.get("name")) ||
             !(/^[a-zA-Z]+$/).test(formData.get("surname")) ||
-            !(/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(formData.get("email")) // Email validation)
+            !(/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(formData.get("email")) // Inputs verification
         ) {
             console.log("Invalid data");
             return;
@@ -30,7 +35,7 @@ export default function Page2() {
 
         console.log("Form data:", formJson);
         try {
-            // Call your API Gateway POST endpoint here:
+            // Send the form data to the server and update the product in consequence
             const response = await fetch("https://oi5hultkdk.execute-api.us-east-1.amazonaws.com/dev/products", {
                 method: "POST",
                 headers: {
@@ -42,7 +47,7 @@ export default function Page2() {
             const responseData = await response.json();
             console.log("Success:", responseData);
 
-            // reset form, remove storaged id, and redirect user
+            // Reset form, remove storaged id, and redirect user
             form.reset();
             sessionStorage.removeItem("key");
             navigate('/');
