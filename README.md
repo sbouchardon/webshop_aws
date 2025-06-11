@@ -1,4 +1,4 @@
-# LE13 Webshop with AWS
+# Webshop with AWS
 
 **Author:** *Stephen Bouchardon*
 
