@@ -3,6 +3,7 @@
 **Author:** *Stephen Bouchardon*
 
 Welcome to the repertory of the web application : https://www.bam-bay.com
+Careful, there is still the responsive design to be made.
 
 This directory is structured into two main directories : client and server.
 
