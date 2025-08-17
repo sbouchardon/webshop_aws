@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+        --color-green: #108A93;
+        --color-red: #ff5c67;
+        --color-gold: #f7ca00;
+        --color-grey: #36454F;
+        --color-beige: #F1F2EB;
+        --color-white: #f3fdff;
+        --color-dune: #CBC09F;
+}
+
+:root {
+  @apply bg-blue-950;
+}
+
+:root::before {
+  content: '';
+  @apply absolute inset-0 bg-black opacity-20;
+  z-index: -1; /* Or 0 if root has -1 */
+}
+
+/* Navigation Bar Classes */
+.navbar {
+    @apply flex space-x-4 mb-4 ;
+}
+
+.navbar_element{
+    @apply flex justify-center items-center
+    px-2 py-1 text-sm font-medium text-beige text-sm
+    hover:border-b-2 hover:border-beige hover:opacity-80
+    active:border-white active:scale-95 ;
+}
+
+/* Search Bar Classes */
+
+.search-bar {
+  @apply flex items-center w-full;
+}
+
+.search-container {
+  @apply flex flex-grow max-w-[600px] border border-[#3433308c] rounded-full overflow-hidden bg-white;
+}
+
+.search-input {
+  @apply flex-1 px-[60px] py-[12px] border-none bg-transparent text-black text-sm outline-none;
+}
+
+/* Card Styles */
+
+.card {
+  @apply flex flex-col max-w-sm w-full rounded-md shadow-md overflow-hidden;
+}
+
+.cardImage {
+  @apply w-full rounded-t-md object-cover;
+}
+
+.cardTitle {
+  @apply text-xl font-semibold text-dune px-4 pt-4;
+}
+.cardDescription {
+  @apply text-base text-grey px-4 pb-4 pt-2;
+} 
+
+/* Button */
+
+.button {
+  @apply inline-flex items-center justify-center cursor-pointer font-bold transition-all duration-200 px-5 py-2.5 rounded-full bg-dune text-beige border border-transparent text-[15px]
+         hover:bg-[#1B2328] active:scale-95 active:bg-black active:text-white;
+}
+
+.nav-button {
+  @apply w-6 h-6 block mx-auto p-0 border-none flex items-center justify-center hover:scale-95 cursor-pointer;
+}
